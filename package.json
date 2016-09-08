@@ -1,0 +1,32 @@
+{
+  "name": "hapi-plugin-tools",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib/index.js",
+  "scripts": {
+    "prepublish": "npm run compile",
+    "compile": "babel src -d lib",
+    "test": "npm run compile && mocha --compilers js:babel-core/register"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/coojee2012/hapi-plugin-tools.git"
+  },
+  "keywords": [
+    "hapi",
+    "common",
+    "tools"
+  ],
+  "author": "Yong Lin",
+  "license": "MIT",
+  "dependencies": {
+    "babel-polyfill": "^6.13.0",
+    "sanitize-html": "^1.13.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.14.0",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-stage-2": "^6.13.0",
+    "mocha": "^3.0.2"
+  }
+}
