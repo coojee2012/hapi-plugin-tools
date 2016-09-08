@@ -18,7 +18,7 @@
     "tools"
   ],
   "author": "Yong Lin",
-  "license": "MIT",
+  "license": "Apache 2.0",
   "dependencies": {
     "babel-polyfill": "^6.13.0",
     "sanitize-html": "^1.13.0"
