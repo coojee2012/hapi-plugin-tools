@@ -10,6 +10,8 @@ const ToolsPlugin = function (server, options, next) {
   server.expose('checkType', tools.checkType);
   server.expose('sanitize', tools.sanitize);
   server.expose('isArray', tools.isArray);
+  server.expose('sanitise', tools.sanitise);
+  server.expose('jwsSign', tools.jwsSign);
   next();
 };
 ToolsPlugin.attributes = {
