@@ -9,15 +9,40 @@
 npm install hapi-plugin-tools
 
 ```
+## Usage
+### In your app
+```js
+import Hapi from 'hapi';
+import ToolsPlugin from 'hapi-plugin-tools';
+const server = new Hapi.Server();
+server.register([
+  {
+    register: ToolsPlugin,
+    options: {},
+  }
+])
+
+// In some where you use it
+
+server.plugins['hapi-plugin-tools'].['xxxx']
+```
 ### Don't forget
 ```js
 require('babel-polyfill'); // In your main prgrams where should use this module
 ```
+
+### functions
+* restJson - let json reply in a  uniform standard
+* checkType - check object type
+* isArray -
+* sanitize - sanitize html
+* and so on ....wait next
+
 ## License
 
 This software is licensed under the Apache 2 license, quoted below.
 
-    Copyright (c) 2014 Elasticsearch <http://www.elasticsearch.org>
+    Copyright (c) 2016 Yong Lin <11366846@qq.com>
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
