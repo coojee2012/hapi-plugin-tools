@@ -1,8 +1,10 @@
 /**
  * Created by LinYong on 11/3/2015.
  */
+import JWT from 'jsonwebtoken';
 import SanitizeHtml from 'sanitize-html';
 
+import * as I18N from './i18n';
 export class Tools {
   constructor(appLogger) {
     this.logger = appLogger || console.log;
@@ -12,6 +14,8 @@ export class Tools {
     this.isArray = this.isArray.bind(this);
     this.each = this.each.bind(this);
     this.sanitizeHtml = this.sanitizeHtml.bind(this);
+    this.sanitise = this.sanitise.bind(this);
+    this.jwsSign = this.jwsSign.bind(this);
     this.hasOwn = this.hasOwn.bind(this);
     this.noop = this.noop.bind(this);
     this.parseUrl = this.parseUrl.bind(this);
@@ -28,7 +32,7 @@ export class Tools {
   restJson(data = {}, code = 0, ttlStart = 0, i18n = 'zh_CN', otherObj = {}) {
     const self = this;
 
-    const lang = require(`./i18n/${i18n}.js`).default;
+    const lang = I18N[i18n];
     const codeType = self.checkType(code);
 
     let result = self.union({}, otherObj);
@@ -151,6 +155,15 @@ export class Tools {
   noop() {
   }
 
+  sanitise(txt) {
+    /* istanbul ignore else */
+    if (txt.indexOf("<") > -1 /* istanbul ignore next */
+        || txt.indexOf(">") > -1) {
+      txt = txt.replace(/</g, "&lt").replace(/>/g, "&gt");
+    }
+    return txt;
+  }
+
   sanitizeHtml(html, options) {
     let self = this;
     return self.sanitize(html);
@@ -166,6 +179,27 @@ export class Tools {
     ].join(''));
     return reURLInformation.exec(url);
   };
+
+  jwsSign(payload, cert, options) {
+    payload = Object.assign(
+        {},
+        {
+          iat: Math.floor(Date.now() / 1000),
+        },
+        payload);
+    options = Object.assign({}, {
+      algorithm: 'RS256',
+      expiresIn: 60 * 60,
+      issuer: '11366846@qq.com',
+      audience: 'audience',
+      subject: 'subject',
+    }, options);
+    return new Promise((resolve, reject) => {
+      JWT.sign(payload, cert, options, (err, token) => {
+        err ? reject(err) : resolve(token);
+      });
+    });
+  }
 
 }
 
