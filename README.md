@@ -1,9 +1,9 @@
 # A tools plugin for hapi
 
-*Just some tools plugin ,enjoy it!*
+*Just a lib plugin for hapi,content some useful tools ,enjoy it!*
 
 
-## Use
+## Install
 
 ```
 npm install hapi-plugin-tools
