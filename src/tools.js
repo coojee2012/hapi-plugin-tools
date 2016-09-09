@@ -14,6 +14,7 @@ export class Tools {
     this.sanitizeHtml = this.sanitizeHtml.bind(this);
     this.hasOwn = this.hasOwn.bind(this);
     this.noop = this.noop.bind(this);
+    this.parseUrl = this.parseUrl.bind(this);
   }
 
   /*
@@ -154,6 +155,17 @@ export class Tools {
     let self = this;
     return self.sanitize(html);
   }
+
+  parseUrl(url){
+    const reURLInformation = new RegExp([
+      '^(https?:)//', // protocol
+      '(([^:/?#]*)(?::([0-9]+))?)', // host (hostname and port)
+      '(/?[^?#]*)', // pathname
+      '(\\?[^#]*|)', // search
+      '(#.*|)$' // hash
+    ].join(''));
+    return reURLInformation.exec(url);
+  };
 
 }
 

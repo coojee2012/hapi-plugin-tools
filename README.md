@@ -36,6 +36,7 @@ require('babel-polyfill'); // In your main prgrams where should use this module
 * checkType - check object type
 * isArray -
 * sanitize - sanitize html
+* parseUrl - parse url for use
 * and so on ....wait next
 
 ## License
