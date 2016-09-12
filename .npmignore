@@ -3,3 +3,4 @@ src
 .gitignore
 .npmignore
 node_modules
+*.log
