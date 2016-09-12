@@ -2,12 +2,13 @@
 
 *Just a lib plugin for hapi,content some useful tools ,enjoy it!*
 
+*If you have some useful method push it to me!*
+
+*欢迎加入您觉得有用的方法,谢谢!*
 
 ## Install
-
 ```
 npm install hapi-plugin-tools
-
 ```
 ## Usage
 ### In your app

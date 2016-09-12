@@ -10,4 +10,9 @@ describe('hapi_plugin_tools', () => {
     assert.equal(true, tools.isArray([]));
     done()
   });
+  it('restJson',done =>{
+    const rest = tools.restJson(null,{name:'MongoError'});
+    assert.equal(80081000,rest.code);
+    done();
+  });
 });

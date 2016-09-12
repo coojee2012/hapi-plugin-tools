@@ -31,7 +31,6 @@ export class Tools {
    */
   restJson(data = {}, code = 0, ttlStart = 0, i18n = 'zh_CN', otherObj = {}) {
     const self = this;
-
     const lang = I18N[i18n];
     const codeType = self.checkType(code);
 
@@ -58,8 +57,13 @@ export class Tools {
       result.message = code.join(',');
     }
     else if (codeType === 'object') {
-      result.code = 80081000;
-      result.message = codeType.message || lang.ErrorCode['80081000'];
+      if(code.name ==='MongoError'){
+        result.code = 80082000;
+        result.message = code.message;
+      }else{
+        result.code = 80081000;
+        result.message = code.message || lang.ErrorCode['80081000'];
+      }
     }
     else {
       //self.logger(['info', 'Reponse'], result);
@@ -169,7 +173,7 @@ export class Tools {
     return self.sanitize(html);
   }
 
-  parseUrl(url){
+  parseUrl(url) {
     const reURLInformation = new RegExp([
       '^(https?:)//', // protocol
       '(([^:/?#]*)(?::([0-9]+))?)', // host (hostname and port)
