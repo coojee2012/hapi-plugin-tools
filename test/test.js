@@ -12,7 +12,7 @@ describe('hapi_plugin_tools', () => {
   });
   it('restJson',done =>{
     const rest = tools.restJson(null,{name:'MongoError'});
-    assert.equal(80081000,rest.code);
+    assert.equal(80082000,rest.code);
     done();
   });
 });
