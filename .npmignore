@@ -2,4 +2,5 @@ src
 .idea
 .gitignore
 .npmignore
+node_modules
 *.log
