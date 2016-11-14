@@ -1,6 +1,6 @@
 {
   "name": "hapi-plugin-tools",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Just a lib plugin for hapi,content some useful tools ,enjoy it!",
   "main": "lib/index.js",
   "scripts": {
